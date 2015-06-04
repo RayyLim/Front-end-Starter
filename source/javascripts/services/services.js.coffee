@@ -1,6 +1,6 @@
-#= require angular/angular
+_ = require 'angular/angular'
 
-#= require ./fake-service
+_ = require './fake-service'
 
 m = angular.module 'services', [
   'fakeService'

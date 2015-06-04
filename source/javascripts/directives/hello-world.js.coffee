@@ -1,5 +1,5 @@
-#= require angular/angular
-#= require ../services/services
+_ = require 'angular/angular'
+_ = require '../services/services'
 
 m = angular.module 'helloWorld', []
 

@@ -1,6 +1,6 @@
-#= require angular/angular
+_ = require 'angular/angular'
 
-#= require ./filter-1.js
+_ = require './filter-1.js'
 
 m = angular.module 'filters', [
   'filter1'

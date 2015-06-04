@@ -1,4 +1,4 @@
-#= require angular/angular
+_ = require 'angular/angular'
 
 console.log("K 1")
 m = angular.module 'helloWorld1', []

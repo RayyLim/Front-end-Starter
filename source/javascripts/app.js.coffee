@@ -1,10 +1,10 @@
-#= require angular/angular
-#= require angular-route/angular-route
-#= require ./directives/directives
-#= require ./services/services
-#= require ./filters/filters
+_ = require 'angular/angular'
+_ = require 'angular-route/angular-route'
+_ = require './directives/directives'
+_ = require './services/services'
+_ = require './filters/filters'
 
-#= require ./routes/index-route
+_ = require './routes/index-route'
 
 console.log("hello ray")
 

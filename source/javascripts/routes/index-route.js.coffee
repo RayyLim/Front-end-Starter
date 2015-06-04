@@ -1,6 +1,6 @@
-#= require angular/angular
-#= require ../services/services
-#= require ../directives/directives
+_ = require 'angular/angular'
+_ = require '../services/services'
+_ = require '../directives/directives'
 
 
 m = angular.module 'indexRoute', []
