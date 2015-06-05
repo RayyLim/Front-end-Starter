@@ -25,3 +25,6 @@ $ gulp watch
 ### Resources on directives
 - http://www.sitepoint.com/practical-guide-angularjs-directives/
 - http://www.sitepoint.com/practical-guide-angularjs-directives-part-two/
+
+### Browserify + Bower + AngularJs + Jquery
+- http://maximilianschmitt.me/posts/angular-angular-ui-browserify-tutorial/
