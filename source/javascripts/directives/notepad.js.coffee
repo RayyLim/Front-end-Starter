@@ -1,4 +1,4 @@
-_ = require 'angular/angular'
+_ = require 'angular'
 
 
 m = angular.module 'notepad', []
@@ -43,7 +43,7 @@ m.directive 'notepad', (notesFactory) ->
 
     # editor = angular.element(elem[0].querySelector('#editor'))
     editor = elem.find('#editor')
-    
+
     console.log('find editor')
     console.log(editor)
     scope.restore()

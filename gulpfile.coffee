@@ -10,7 +10,6 @@ coffeelint   = require 'gulp-coffeelint'
 sass         = require 'gulp-sass'
 autoprefixer = require 'gulp-autoprefixer'
 browserSync  = require 'browser-sync'
-bowerSrc     = require 'gulp-bower-src'
 
 gulp.task 'clean', ->
     gulp.src 'build/*', {read : false}
@@ -38,9 +37,6 @@ gulp.task 'js', ['lint'], ->
         extensions: ['.coffee', '.js', '.js.coffee']
         paths: ['./source/javascripts']
     .transform 'coffeeify'
-    .transform 'deamdify'
-    .transform 'debowerify'
-    # .transform 'uglifyify'
     .bundle()
     .pipe source 'app.js'
     .pipe gulp.dest 'build/javascripts'
@@ -65,9 +61,6 @@ gulp.task 'build', ['html', 'js', 'css']
 gulp.task 'default', ['clean'], -> gulp.start 'build'
 
 gulp.task 'server', ['build'], ->
-    bowerSrc()
-        .pipe gulp.dest('./build/javascripts')
-
     browserSync.init
         server:
             baseDir: './build/'

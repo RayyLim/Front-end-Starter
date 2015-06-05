@@ -5,6 +5,7 @@
   "main": "",
   "dependencies": {
     "browserify": "^10.2.3",
+    "browserify-shim": "^3.8.8",
     "coffee-script": "^1.9.3",
     "coffeeify": "^1.1.0",
     "deamdify": "^0.1.1",
@@ -41,6 +42,25 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "jquery": "./bower_components/jquery/dist/jquery.js",
+    "angular": "./bower_components/angular/angular.js",
+    "angular-route": "./bower_components/angular-route/angular-route.js"
+  },
+  "browserify-shim": {
+    "jquery": {
+      "exports": "$"
+    },
+    "angular": {
+      "exports": "angular",
+      "depends": "jquery"
+    }
   },
   "author": "",
   "license": "ISC"

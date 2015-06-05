@@ -1,5 +1,6 @@
-_ = require 'angular/angular'
-_ = require 'angular-route/angular-route'
+_ = require 'angular'
+_ = require 'angular-route'
+
 _ = require './directives/directives'
 _ = require './services/services'
 _ = require './filters/filters'

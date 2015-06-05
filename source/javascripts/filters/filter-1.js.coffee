@@ -1,4 +1,4 @@
-_ = require 'angular/angular'
+_ = require 'angular'
 
 m = angular.module 'filter1', []
 

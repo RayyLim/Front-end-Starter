@@ -1,4 +1,4 @@
-_ = require 'angular/angular'
+_ = require 'angular'
 _ = require '../services/services'
 _ = require '../directives/directives'
 
