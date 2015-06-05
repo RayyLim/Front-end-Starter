@@ -6,7 +6,7 @@ _ = require './filters/filters'
 
 _ = require './routes/index-route'
 
-console.log("hello ray")
+console.log("hello ray 2")
 
 m = angular.module 'helloApp', [
   'ngRoute'
