@@ -1,6 +1,5 @@
 _ = require 'angular'
 
-
 m = angular.module 'notepad', []
   
 m.directive 'notepad', (notesFactory) ->
@@ -14,9 +13,6 @@ m.directive 'notepad', (notesFactory) ->
 
     scope.openEditor = (index) ->
       scope.editMode = true
-
-      console.log('open')
-      console.log(index)
       
       if index != undefined
         scope.noteText = notesFactory.get(index).content
@@ -41,19 +37,15 @@ m.directive 'notepad', (notesFactory) ->
         scope.notes = notesFactory.put(note)
       scope.restore()
 
-    # editor = angular.element(elem[0].querySelector('#editor'))
     editor = elem.find('#editor')
 
-    console.log('find editor')
-    console.log(editor)
     scope.restore()
     scope.notes = notesFactory.getAll()
 
     editor.bind 'keyup keydown', ->
-      console.log 'editor: '+editor.text()
       scope.noteText = editor.text().trim()
 
-  templateUrl: 'templates/directives/templateurl.html'
+  templateUrl: 'templates/directives/notepad.html'
 
 m.factory 'notesFactory', ->
   put: (note) ->
@@ -63,7 +55,6 @@ m.factory 'notesFactory', ->
     JSON.parse localStorage.getItem('note' + index)
   getAll: ->
     notes = []
-    console.log(localStorage.length)
     for i in [0 .. localStorage.length-1]
       if localStorage.key(i).indexOf('note') != -1
         note = localStorage.getItem(localStorage.key(i))

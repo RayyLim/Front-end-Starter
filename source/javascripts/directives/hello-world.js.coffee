@@ -1,20 +1,17 @@
 _ = require 'angular'
-_ = require '../services/services'
 
 m = angular.module 'helloWorld', []
 
-m.directive 'helloWorldThing', ->
-  controller: 'HelloWorldCtrl'
-  restrict: 'E'
-  replace: true
+m.directive 'helloWorld', ->
   scope:
-    start: '='
-    end: '='
-    pageSize: '='
-    loading: '='
-    events: '='
+    color: '@' # one way bind
+  restrict: 'AE'
+  replace: true
   templateUrl: 'templates/directives/hello-world.html'
-
-m.controller 'HelloWorldCtrl', ($rootScope, $scope) ->
-  angular.extend $scope,
-    yes: "no"
+  link: (scope, elem, attrs) ->
+    elem.bind 'click', ->
+      elem.css 'background-color', 'blue'
+      scope.$apply ->
+        scope.color = green
+    elem.bind 'mouseover', ->
+      elem.css 'cursor', 'pointer'

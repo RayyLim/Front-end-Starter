@@ -7,8 +7,6 @@ _ = require './filters/filters'
 
 _ = require './routes/index-route'
 
-console.log("hello ray 2")
-
 m = angular.module 'helloApp', [
   'ngRoute'
   'directives'
@@ -25,9 +23,7 @@ routes = [
 
 m.config ($routeProvider) ->
   for route in routes
-    console.log(route)
     $routeProvider.when "/#{route.path}",
       templateUrl: "templates/routes/#{route.templateName}.html"
       controller: route.controller
   $routeProvider.otherwise { redirectTo: '/' }
-  console.log($routeProvider)
