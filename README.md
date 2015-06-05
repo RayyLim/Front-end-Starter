@@ -1,4 +1,4 @@
-# Middle-man+Angular Template
+# Gulp+Browserify+Angular Template
 
 ### Installation
 ```sh
