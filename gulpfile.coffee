@@ -1,6 +1,5 @@
 'use strict'
 gulp         = require 'gulp'
-gp           = require 'gulp-load-plugins'
 path         = require 'path'
 browserify   = require 'browserify'
 source       = require 'vinyl-source-stream'
@@ -8,9 +7,9 @@ jade         = require 'gulp-jade'
 rename       = require 'gulp-rename'
 clean        = require 'gulp-clean'
 coffeelint   = require 'gulp-coffeelint'
-connect      = require 'gulp-connect'
 sass         = require 'gulp-sass'
 autoprefixer = require 'gulp-autoprefixer'
+browserSync  = require 'browser-sync'
 
 gulp.task 'clean', ->
     gulp.src 'build/*', {read : false}
@@ -22,7 +21,7 @@ gulp.task 'html', ->
         .pipe jade()
         .pipe rename {extname:""}
         .pipe gulp.dest 'build'
-        .pipe connect.reload()
+        .pipe browserSync.stream()
 
 # lint
 gulp.task 'lint', ->
@@ -44,13 +43,13 @@ gulp.task 'js', ['lint'], ->
     .bundle()
     .pipe source 'app.js'
     .pipe gulp.dest 'build/javascripts'
-    .pipe connect.reload()
+    # .pipe browserSync.stream()
 
 # CSS
 gulp.task 'css', ->
     gulp.src 'source/stylesheets/**/*.css'
         .pipe gulp.dest 'build/stylesheets'
-        .pipe connect.reload()
+        .pipe browserSync.stream()
     
     gulp.src 'source/stylesheets/**/*.sass'
         .pipe sass
@@ -58,17 +57,16 @@ gulp.task 'css', ->
         .pipe autoprefixer 'last 2 version'
         .pipe rename {extname:""}
         .pipe gulp.dest 'build/stylesheets'
-        .pipe connect.reload()
-
+        .pipe browserSync.stream()
 
 gulp.task 'build', ['html', 'js', 'css'] 
 
 gulp.task 'default', ['clean'], -> gulp.start 'build'
 
 gulp.task 'server', ['build'], ->
-    connect.server 
-        root: ['build']
-        livereload: true
+    browserSync.init
+        server:
+            baseDir: './build/'
 
 gulp.task 'watch', ['server'], ->
     gulp.watch 'source/**/*.coffee', ['js']
