@@ -1,10 +1,11 @@
 doctype html
 html(lang='en', ng-app='helloApp')
 head
-    meta(charset='utf-8')
-    title Hello App 2
-    link(href='stylesheets/app.css', rel='stylesheet', type='text/css')
+  meta(charset='utf-8')
+  title Hello App 2
+  link(href='stylesheets/app.css', rel='stylesheet', type='text/css')
 body.withNav
-    script(src='javascripts/app.js')
-    .main(ng-view)
+  script(src='javascripts/jquery/dist/jquery.js')
+  script(src='javascripts/app.js')
+  .main(ng-view)
 

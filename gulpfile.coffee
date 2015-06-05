@@ -10,6 +10,7 @@ coffeelint   = require 'gulp-coffeelint'
 sass         = require 'gulp-sass'
 autoprefixer = require 'gulp-autoprefixer'
 browserSync  = require 'browser-sync'
+bowerSrc     = require 'gulp-bower-src'
 
 gulp.task 'clean', ->
     gulp.src 'build/*', {read : false}
@@ -51,7 +52,7 @@ gulp.task 'css', ->
         .pipe gulp.dest 'build/stylesheets'
         .pipe browserSync.stream()
     
-    gulp.src 'source/stylesheets/**/*.sass'
+    gulp.src 'source/stylesheets/**/*.scss'
         .pipe sass
             includePaths: ['bower_components/bootstrap-sass-official/assets/stylesheets', '.']
         .pipe autoprefixer 'last 2 version'
@@ -64,6 +65,9 @@ gulp.task 'build', ['html', 'js', 'css']
 gulp.task 'default', ['clean'], -> gulp.start 'build'
 
 gulp.task 'server', ['build'], ->
+    bowerSrc()
+        .pipe gulp.dest('./build/javascripts')
+
     browserSync.init
         server:
             baseDir: './build/'
